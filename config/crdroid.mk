@@ -22,6 +22,29 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.input.video_enabled=false
 
+
+# Quick Switch
+TARGET_DEFAULT_PIXEL_LAUNCHER ?= false
+WITH_GMS ?= true
+ifeq ($(WITH_GMS),true)
+ifeq ($(TARGET_DEFAULT_PIXEL_LAUNCHER), true)
+# Pixel Launcher
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.default_launcher=1 \
+    persist.sys.quickswitch_pixel_shipped=1
+else
+# Launcher3
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.default_launcher=0 \
+    persist.sys.quickswitch_pixel_shipped=1
+endif
+else
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.default_launcher=0
+endif
+
+
+
 # Blur
 ifneq ($(TARGET_SUPPORTS_BLUR),false)
 PRODUCT_PRODUCT_PROPERTIES += ro.surface_flinger.supports_background_blur=1
