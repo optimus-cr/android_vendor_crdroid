@@ -217,9 +217,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     rsync
 
-# Storage manager
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.storage_manager.enabled=true
 
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
@@ -260,10 +257,7 @@ endif
 # Audio files
 $(call inherit-product, vendor/lineage/audio/audio.mk)
 
-# SetupWizard
-PRODUCT_PRODUCT_PROPERTIES += \
-    setupwizard.theme=glif_v4 \
-    setupwizard.feature.day_night_mode_enabled=true
+
 
 # # GMS
 WITH_GMS ?= true
